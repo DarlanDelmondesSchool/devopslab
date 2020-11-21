@@ -17,7 +17,7 @@ addons:
 # Defini o script de Teste que deve rodar toda vez que o código for alterado.
 script:                                                                                                                                                                                                  
   - python -m unittest -v test || travis_terminate 1;
-  - sonar-scanner || travis_terminate_1;
+  - sonar-scanner || travis_terminate 1;
 
 # Definir o Deploy no Heroku
 deploy:
