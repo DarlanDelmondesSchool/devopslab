@@ -1,37 +1,47 @@
 # Linguagem Utilizada para Desenvolver a Aplicação                                                                                                                                                       
 language: python                                                                                                                                                                                         
-os: linux
-dist: xenial
 
 # Versão que a aplicação suporta.                                                                                                                                                                        
 python:                                                                                                                                                                                                  
   - "3.7.9"                                                                                                                                                                                              
 
-# Instalação de Módulos que são necessários para a Aplicação.                                                                                                                                            
-install:                                                                                                                                                                                                 
-  - pip install flask flask-wtf coverage      
+os: linux
+dist: xenial
 
-addons:
-  sonarcloud:
-    organization: darlandelmondesschool
-    token: ${SONAR_TOKEN}
+jobs:
+  include:
+    - stage: Testes
 
-# Defini o script de Teste que deve rodar toda vez que o código for alterado.
-script:                                                                                                                                                                                                  
-  - coverage run test.py || travis_terminate 1;
-  - coverage report app.py || travis_terminate 1;
-  - coverage xml app.py || travis_terminate 1;
-  - sonar-scanner || travis_terminate 1;
+      name: "Testes Unitarios"
+      # Instalação de Módulos que são necessários para a Aplicação.
+      install:
+        - pip install flask flask-wtf coverage
+      script:  # Defini o script de Teste que deve rodar toda vez que o código for alterado.
+        - coverage run test.py || travis_terminate 1;
+        - coverage report app.py || travis_terminate 1;
+        - coverage xml app.py || travis_terminate 1;
 
-# Definir o Deploy no Heroku
-deploy:
-  strategy: api
-  provider: heroku
-  api_key: $HEROKU_API_KEY
-  edge: true 
-  app: devopslab-darlan
-  on:
-      branch: main
+    - script:
+        - sonar-scanner || travis_terminate 1;
+      name: "Testes de Qualidade e Seguranca"
+      addons:
+        sonarcloud:
+          organization: darlandelmondesschool
+          token: ${SONAR_TOKEN}
+
+    - stage: Deploy
+      script: skip
+      # Definir o Deploy no Heroku
+      deploy:
+        provider: heroku
+        strategy: api
+        api_key: $HEROKU_API_KEY
+        edge: true
+        app: devopslab-darlan
+        on:
+          branch: main
+      
+      
 #deploy:
 #  provider: codedeploy
 #  revision_type: github
