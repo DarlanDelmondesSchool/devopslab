@@ -31,4 +31,12 @@ deploy:
   edge: true 
   app: devopslab-darlan
   on:
-      branch: main  
+      branch: main 
+deploy:
+  - provider: codedeploy
+    revision_type: github
+    access_key_id: $CHAVE_AWS
+    secret_access_key: $TOKEN_AWS
+    application: "Your Codedeploy application"
+    deployment_group: "The Deployment group associated with the codedeploy application"
+    region: "Region in which your ec2 instance is." 
