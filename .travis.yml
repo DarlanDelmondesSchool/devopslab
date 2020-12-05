@@ -24,21 +24,21 @@ script:
   - sonar-scanner || travis_terminate 1;
 
 # Definir o Deploy no Heroku
-#deploy:
-#  strategy: api
-#  provider: heroku
-#  api_key: $HEROKU_API_KEY
-#  edge: true 
-#  app: devopslab-darlan
-#  on:
-#      branch: main 
 deploy:
-  provider: codedeploy
-  revision_type: github
-  access_key_id: $CHAVE_AWS
-  secret_access_key: $TOKEN_AWS
-  application: "Your Codedeploy application"
-  deployment_group: "The Deployment group associated with the codedeploy application"
-  region: "Region in which your ec2 instance is."
+  strategy: api
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  edge: true 
+  app: devopslab-darlan
   on:
       branch: main
+#deploy:
+#  provider: codedeploy
+#  revision_type: github
+#  access_key_id: $CHAVE_AWS
+#  secret_access_key: $TOKEN_AWS
+#  application: "Your Codedeploy application"
+#  deployment_group: "The Deployment group associated with the codedeploy application"
+#  region: "Region in which your ec2 instance is."
+#  on:
+#      branch: main
