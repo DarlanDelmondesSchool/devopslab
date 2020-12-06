@@ -46,8 +46,7 @@ jobs:
       deploy:
         provider: elasticbeanstalk
         access_key_id: $CHAVE_AWS
-        secret_access_key: 
-          secure: $TOKEN_AWS
+        secret_access_key: $TOKEN_AWS
         region: "sa-east-1"
         application: "DevOpsLab"
         env: "DevOpsLab_prd"
