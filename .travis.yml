@@ -11,7 +11,6 @@ dist: xenial
 jobs:
   include:
     - stage: Testes
-
       name: "Testes Unitarios"
       # Instalação de Módulos que são necessários para a Aplicação.
       install:
@@ -31,7 +30,7 @@ jobs:
 
     - stage: Deploy
       script: skip
-      # Definir o Deploy no Heroku
+      name: "Deployment no Heroku"
       deploy:
         provider: heroku
         strategy: api
@@ -40,15 +39,18 @@ jobs:
         app: devopslab-darlan
         on:
           branch: main
-      
-      
-#deploy:
-#  provider: codedeploy
-#  revision_type: github
-#  access_key_id: $CHAVE_AWS
-#  secret_access_key: $TOKEN_AWS
-#  application: "Your Codedeploy application"
-#  deployment_group: "The Deployment group associated with the codedeploy application"
-#  region: "Region in which your ec2 instance is."
-#  on:
-#      branch: main
+
+    - stage: Deploy
+      script: skip
+      name: "Deployment na AWS"
+      deploy:
+      provider: elasticbeanstalk
+      access_key_id: $CHAVE_AWS
+      secret_access_key: 
+        secure: $TOKEN_AWS
+      region: "sa-east-1"
+      application: "DevOpsLab"
+      env: "DevOpsLab_prd"
+      bucket_name: "elasticbeanstalk-sa-east-1-421462098277"
+      on:
+          branch: main      
