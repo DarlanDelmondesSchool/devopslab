@@ -49,7 +49,7 @@ jobs:
         secret_access_key: $TOKEN_AWS
         region: "sa-east-1"
         application: "DevOpsLab"
-        env: "DevOpsLab_prd"
+        env: "Devopslab-env"
         bucket_name: "elasticbeanstalk-sa-east-1-421462098277"
         on:
             branch: main      
