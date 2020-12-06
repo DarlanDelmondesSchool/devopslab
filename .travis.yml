@@ -52,4 +52,14 @@ jobs:
         env: "Devopslab-env"
         bucket_name: "elasticbeanstalk-sa-east-1-421462098277"
         on:
-            branch: main      
+          branch: main
+
+    - stage: Deploy
+      script: skip
+      name: "Deployment na Google Cloud Platform"
+      deploy:
+        provider: gae
+        keyfile: $GCPKEY
+        project: black-caster-271814
+        on:
+          branch: main
