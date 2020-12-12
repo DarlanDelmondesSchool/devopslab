@@ -17,7 +17,7 @@ class Test(unittest.TestCase):
 
     def test_conteudo(self):                                                                                                                                                                             
         # verifica o retorno do conteudo da pagina                                                                                                                                                       
-        self.assertEqual(self.result.data.decode('utf-8'), "Laboratório Pipeline DevOps") 
+        self.assertEqual(self.result.data.decode('utf-8'), "Lab Pipeline DevOps") 
 if __name__ == "__main__":                                                                                                                                                                               
     print ('INICIANDO OS TESTES')                                                                                                                                                                        
     print('----------------------------------------------------------------------')                                                                                                                      

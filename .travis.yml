@@ -41,17 +41,9 @@ jobs:
           branch: main
     
     - stage: Staging Test
-      name: "Testes Unitarios"
+      name: "Testing Request HTTP via linux curl"
       script:  # Defini o script de Teste que deve rodar toda vez que o código for alterado.
-        - sleep 2; curl http://devopslab-darlan.herokuapp.com/ | grep -i Laborat.rio.Pipeline.DevOps || travis_terminate 1;
-
-    - script:
-        - sonar-scanner || travis_terminate 1;
-      name: "Testes de Qualidade e Seguranca"
-      addons:
-        sonarcloud:
-          organization: darlandelmondesschool
-          token: ${SONAR_TOKEN}
+        - sleep 2; curl http://devopslab-darlan.herokuapp.com/ | grep -i Lab Pipeline.DevOps || travis_terminate 1;
 
     - stage: Production Deploy
       script: skip
@@ -66,3 +58,8 @@ jobs:
         bucket_name: "elasticbeanstalk-sa-east-1-421462098277"
         on:
           branch: main
+
+    - stage: Production Test
+      name: "Testing Request HTTP via linux curl"
+      script:  # Defini o script de Teste que deve rodar toda vez que o código for alterado.
+        - sleep 2; curl http://devopslab-env.eba-tczdxr6h.sa-east-1.elasticbeanstalk.com/ | grep -i Lab.Pipeline.DevOps || travis_terminate 1;
