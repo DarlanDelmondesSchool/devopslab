@@ -43,7 +43,7 @@ jobs:
     - stage: Staging Test
       name: "Testing Request HTTP via linux curl"
       script:  # Defini o script de Teste que deve rodar toda vez que o código for alterado.
-        - sleep 2; curl http://devopslab-darlan.herokuapp.com/ | grep -i Lab Pipeline.DevOps || travis_terminate 1;
+        - sleep 2; curl http://devopslab-darlan.herokuapp.com/ | grep -i Lab.Pipeline.DevOps || travis_terminate 1;
 
     - stage: Production Deploy
       script: skip
