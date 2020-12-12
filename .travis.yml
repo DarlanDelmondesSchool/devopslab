@@ -68,3 +68,6 @@ jobs:
       name: "Testing Request HTTP via linux curl"
       script:  # Defini o script de Teste que deve rodar toda vez que o código for alterado.
         - sleep 2; curl http://devopslab-env.eba-tczdxr6h.sa-east-1.elasticbeanstalk.com/ | grep -i Lab.Pipeline.DevOps || travis_terminate 1;
+
+notifications:
+  slack: devopstoolsgroup:mKQ6sWgMMb824T9NBrEYfj7I
