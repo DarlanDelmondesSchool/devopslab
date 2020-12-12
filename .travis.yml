@@ -70,4 +70,5 @@ jobs:
         - sleep 2; curl http://devopslab-env.eba-tczdxr6h.sa-east-1.elasticbeanstalk.com/ | grep -i Lab.Pipeline.DevOps || travis_terminate 1;
 
 notifications:
-  slack: devopstoolsgroup:mKQ6sWgMMb824T9NBrEYfj7I
+  slack:
+    secure: 2JzBAGyqDgpe5g3cy0Q19WMVnXOhZOEnhzIjpf7BEUZCBkmqsAZF+P6RtkhdkBYudM7Z2uQpRS5V8sMcY9Zfzje+3hJYFJexkpwIbv+/h9yY6Hde05CVUTMnE7GEITI5okGmfD4nf3WbPM0cKXGBymKHgVSptcSVCw56vY7fxZwLoaMCKWBAZmGjDsTbTSTrMOSXjKUlzLoaQTR0zDdTT+ma/g2noufyC0cRoT1Y5QAMa81u8LAOVdOummpKpWYiI9eY++0UlyBT/nP4VxPCvOB4kyMVFdgCGcBxktSSrjG2lAciuWHMKM7Q5ir3QdtWFwhvxTmG0SToTOB5WRilEtEGlwgbAaYh8ckGRiORIKTIxVFab1Pliq2rk7eFp0QczYQgnEWotgZExRkK8XEQ42buDKwCTkFnHzL2RT8MnAOxoqhdevZUycO8CJ+zkWgsxatCILgjzzAi/mwf1m2UDRRt5mJ496ud1VvfY1iLZj/fcjZ+krt/Z3jQhs/LQBEe5J8JlaSlSH2nPltdAbQYOaZbtYqfu4NmhFyW5N7B3rbRTI/CU8oIha7qo70TWK2Lz0n4gyyM4dz0A8Vb/1F5XmgYfotyCAPndpmeQEVHwGkCeGrwT907EyfkJQ7tT92D6GkaUPAAMNsKBC1uUt/Qd2C4k7VSosCGTsvKE1ddgJ0=
